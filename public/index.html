@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voo da Memória — IFSC Araranguá</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══════════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-bird">🕊</span>
+      <span>Voo da Memória</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#projeto">O Projeto</a></li>
+      <li><a href="#compartilhar">Compartilhar</a></li>
+      <li><a href="#historias">Histórias</a></li>
+      <li><a href="admin.html" class="nav-admin">Moderação</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════════════ -->
+<header class="hero" id="inicio">
+  <div class="hero-bg">
+    <div class="hero-grain"></div>
+    <svg class="hero-waves" viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path d="M0,80 C360,160 1080,0 1440,80 L1440,200 L0,200Z" fill="rgba(255,255,255,0.05)"/>
+      <path d="M0,120 C480,40 960,180 1440,100 L1440,200 L0,200Z" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <span class="hero-tag">Instituto Federal de Santa Catarina · Câmpus Araranguá</span>
+    <h1 class="hero-title">
+      <span class="hero-title-projeto">Projeto</span>
+      <span class="hero-title-voo">Voo da</span>
+      <span class="hero-title-memoria">Memória</span>
+    </h1>
+    <p class="hero-subtitle">
+      O Quero-Quero como símbolo da identidade<br>e história dos servidores do IFSC Araranguá
+    </p>
+    <div class="hero-actions">
+      <a href="#compartilhar" class="btn btn-primary">Compartilhar minha história</a>
+      <a href="#historias" class="btn btn-outline">Ver histórias</a>
+    </div>
+  </div>
+  <div class="hero-bird-wrap">
+    <div class="hero-bird-silhouette"></div>
+    <svg class="hero-feathers" viewBox="0 0 200 300" fill="none">
+      <path d="M100 280 Q80 200 40 150 Q20 120 10 80" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
+      <path d="M100 280 Q120 190 160 140 Q180 110 190 60" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
+      <path d="M100 250 Q70 180 50 130" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+      <path d="M100 250 Q130 170 150 120" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-scroll">
+    <span>Rolar</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</header>
+
+<!-- ═══ SOBRE ═════════════════════════════════════════════════════════════════ -->
+<section class="section sobre" id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <span class="section-tag">Apresentação</span>
+        <h2 class="section-title">Memória que inspira,<br><em>identidade que nos une</em></h2>
+        <p>
+          O projeto <strong>Voo da Memória</strong> tem como foco principal resgatar, registrar e valorizar a memória institucional dos servidores do IFSC Câmpus Araranguá por meio de investigação histórica, culminando no desenvolvimento de um produto de identidade visual — uma camiseta estampada com a imagem do Quero-Quero.
+        </p>
+        <p>
+          Assim como o Quero-Quero alerta e protege o ambiente em que vive, os servidores atuam como guardiões da missão institucional. <strong>Suas memórias são parte da nossa trajetória e inspiram o nosso futuro.</strong>
+        </p>
+        <div class="sobre-meta">
+          <div class="meta-item">
+            <span class="meta-label">Período</span>
+            <span class="meta-value">Jun — Dez 2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">ODS</span>
+            <span class="meta-value">4 · 16</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Área</span>
+            <span class="meta-value">Cultura</span>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-visual">
+        <div class="sobre-card">
+          <div class="sobre-card-icon">🐦</div>
+          <blockquote>
+            "Assim como o Quero-Quero, os servidores protegem e constroem nosso território todos os dias."
+          </blockquote>
+        </div>
+        <div class="sobre-team">
+          <p class="team-label">Equipe</p>
+          <ul>
+            <li><strong>Dr.ª Luciane Nóbrega Juliano</strong> — Coordenadora</li>
+            <li><strong>Me. José Augusto Farias Santos</strong> — Colaborador Técnico</li>
+            <li><strong>Maria Flor Silva</strong> — Discente Bolsista</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ O PROJETO ════════════════════════════════════════════════════════════ -->
+<section class="section projeto" id="projeto">
+  <div class="projeto-bg"></div>
+  <div class="container">
+    <span class="section-tag light">O que é o projeto?</span>
+    <h2 class="section-title light">Três pilares,<br><em>um voo único</em></h2>
+    <div class="pilares-grid">
+      <div class="pilar" data-delay="0">
+        <div class="pilar-icon">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="currentColor" stroke-width="2"/><path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>História Oral</h3>
+        <p>Entrevistas de história oral com servidores antigos e recentes, capturando áudio, vídeo e as narrativas que constroem a identidade do câmpus.</p>
+      </div>
+      <div class="pilar" data-delay="150">
+        <div class="pilar-icon">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Criação Têxtil</h3>
+        <p>Discentes do 3º ano do Curso Técnico em Têxtil criam a estampa do Quero-Quero, traduzindo memórias em arte por meio de serigrafia e design gráfico.</p>
+      </div>
+      <div class="pilar" data-delay="300">
+        <div class="pilar-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4L4 16v4h40v-4L24 4z" stroke="currentColor" stroke-width="2"/><rect x="8" y="20" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M20 20v20M28 20v20" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Evento Cultural</h3>
+        <p>Exposição aberta à comunidade para entrega do produto final, unindo servidores, estudantes e a sociedade em torno da memória institucional.</p>
+      </div>
+    </div>
+
+    <div class="etapas">
+      <h3 class="etapas-title">Cronograma do Projeto</h3>
+      <div class="timeline">
+        <div class="tl-item"><span class="tl-mes">Jun</span><span class="tl-desc">Revisão bibliográfica e planejamento metodológico</span></div>
+        <div class="tl-item"><span class="tl-mes">Jul–Ago</span><span class="tl-desc">Entrevistas de história oral com servidores</span></div>
+        <div class="tl-item"><span class="tl-mes">Ago–Set</span><span class="tl-desc">Transcrição, análise e sistematização das experiências</span></div>
+        <div class="tl-item"><span class="tl-mes">Set–Out</span><span class="tl-desc">Oficinas de design e criação da arte do Quero-Quero</span></div>
+        <div class="tl-item"><span class="tl-mes">Out–Nov</span><span class="tl-desc">Produção técnica: estamparia das camisetas</span></div>
+        <div class="tl-item"><span class="tl-mes">Nov</span><span class="tl-desc">Evento cultural e exposição para a comunidade</span></div>
+        <div class="tl-item"><span class="tl-mes">Dez</span><span class="tl-desc">Avaliação, prestação de contas e relatório final</span></div>
+      </div>
+    </div>
+
+    <div class="metas-grid">
+      <div class="meta-card"><span class="meta-num">15</span><span class="meta-desc">servidores entrevistados</span></div>
+      <div class="meta-card"><span class="meta-num">~30</span><span class="meta-desc">alunos envolvidos na produção</span></div>
+      <div class="meta-card"><span class="meta-num">50</span><span class="meta-desc">camisetas produzidas</span></div>
+      <div class="meta-card"><span class="meta-num">100</span><span class="meta-desc">pessoas no evento</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORMULÁRIO ═══════════════════════════════════════════════════════════ -->
+<section class="section compartilhar" id="compartilhar">
+  <div class="container">
+    <span class="section-tag">Participe</span>
+    <h2 class="section-title">Sua história<br><em>faz parte dessa estampa</em></h2>
+    <p class="section-intro">
+      Você é servidor do IFSC Araranguá? Compartilhe uma memória, uma experiência ou um momento marcante da sua trajetória na instituição. Sua história enriquece o acervo do Voo da Memória.
+    </p>
+
+    <form class="story-form" id="storyForm" novalidate>
+      <div class="form-group">
+        <label for="nome">Nome completo <span class="required">*</span></label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" maxlength="120" autocomplete="name" />
+        <span class="field-error" id="nomeErr"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="texto">Sua história <span class="required">*</span></label>
+        <textarea id="texto" name="texto" rows="7" maxlength="10000" placeholder="Conte uma memória, experiência ou momento marcante vivido no IFSC Araranguá..."></textarea>
+        <div class="char-count"><span id="charCount">0</span>/10.000 caracteres</div>
+        <span class="field-error" id="textoErr"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Arquivo (opcional)</label>
+        <div class="file-drop" id="fileDrop">
+          <input type="file" id="arquivo" name="arquivo" accept="image/*,.pdf,audio/*" hidden />
+          <div class="file-drop-inner" id="fileDropInner">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 4v28M14 22l10-10 10 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 36v2a4 4 0 004 4h28a4 4 0 004-4v-2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <p><strong>Arraste seu arquivo aqui</strong> ou clique para selecionar</p>
+            <small>Imagens, PDF ou áudio · máx. 10 MB</small>
+          </div>
+          <div class="file-selected" id="fileSelected" hidden>
+            <span class="file-name" id="fileName"></span>
+            <button type="button" class="file-remove" id="fileRemove" aria-label="Remover arquivo">✕</button>
+          </div>
+        </div>
+        <div class="upload-bar" id="uploadBar" hidden>
+          <div class="upload-bar-fill" id="uploadBarFill"></div>
+          <span class="upload-bar-pct" id="uploadBarPct">0%</span>
+        </div>
+        <span class="field-error" id="arquivoErr"></span>
+      </div>
+
+      <div class="form-note">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+        Sua história passará por moderação antes de ser publicada.
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+        <span class="btn-text">Enviar minha história</span>
+        <span class="btn-loading" hidden>Enviando…</span>
+      </button>
+
+      <div class="form-success" id="formSuccess" hidden>
+        <div class="success-icon">✓</div>
+        <h3>História enviada com sucesso!</h3>
+        <p>Agradecemos sua participação. Sua história será revisada e publicada em breve.</p>
+        <button type="button" class="btn btn-outline" id="newStoryBtn">Enviar outra história</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ HISTÓRIAS ═════════════════════════════════════════════════════════════ -->
+<section class="section historias" id="historias">
+  <div class="container">
+    <span class="section-tag">Acervo</span>
+    <h2 class="section-title">Histórias da nossa<br><em>trajetória</em></h2>
+    <p class="section-intro">Memórias compartilhadas por servidores e membros da comunidade do IFSC Araranguá.</p>
+
+    <div class="stories-grid" id="storiesGrid">
+      <div class="stories-loading" id="storiesLoading">
+        <div class="spinner"></div>
+        <p>Carregando histórias…</p>
+      </div>
+    </div>
+    <div class="stories-empty" id="storiesEmpty" hidden>
+      <div class="empty-bird">🐦</div>
+      <p>Nenhuma história publicada ainda.<br>Seja o primeiro a compartilhar!</p>
+      <a href="#compartilhar" class="btn btn-primary">Compartilhar agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">Voo da Memória</p>
+        <p class="footer-tagline">Ontem, hoje e sempre — juntos construímos o IFSC Araranguá.</p>
+      </div>
+      <div class="footer-ods">
+        <p class="footer-label">Alinhado aos ODS</p>
+        <div class="ods-badges">
+          <div class="ods-badge ods-4"><span>4</span>Educação de Qualidade</div>
+          <div class="ods-badge ods-16"><span>16</span>Paz e Instituições</div>
+        </div>
+      </div>
+      <div class="footer-inst">
+        <p class="footer-label">Instituição</p>
+        <p>Instituto Federal de Santa Catarina<br>Câmpus Araranguá</p>
+        <a href="https://www.ifsc.edu.br" target="_blank" rel="noopener">ifsc.edu.br ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Projeto Voo da Memória · IFSC Araranguá · Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

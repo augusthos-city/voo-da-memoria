@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Moderação — Voo da Memória</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/admin.css"/>
+</head>
+<body class="admin-body">
+
+<div class="admin-login" id="adminLogin">
+  <div class="admin-login-card">
+    <div class="admin-login-logo">🐦 Voo da Memória</div>
+    <h1>Painel de Moderação</h1>
+    <p>Insira o token de administrador para acessar.</p>
+    <div class="form-group">
+      <label for="adminToken">Token de acesso</label>
+      <input type="password" id="adminToken" placeholder="••••••••" autocomplete="current-password"/>
+    </div>
+    <button class="btn btn-primary btn-full" id="loginBtn">Entrar</button>
+    <span class="field-error" id="loginErr"></span>
+    <a href="/" class="admin-back">← Voltar ao site</a>
+  </div>
+</div>
+
+<div class="admin-panel" id="adminPanel" hidden>
+  <nav class="admin-nav">
+    <a href="/" class="admin-nav-logo">← Voo da Memória</a>
+    <div class="admin-stats" id="adminStats"></div>
+    <button class="btn btn-outline btn-sm" id="logoutBtn">Sair</button>
+  </nav>
+
+  <div class="admin-content">
+    <div class="admin-filter">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="pending">⏳ Pendentes</button>
+      <button class="filter-btn" data-filter="approved">✓ Aprovadas</button>
+      <button class="filter-btn" data-filter="rejected">✕ Rejeitadas</button>
+    </div>
+    <div class="admin-list" id="adminList">
+      <div class="stories-loading"><div class="spinner"></div><p>Carregando…</p></div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
