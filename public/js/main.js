@@ -184,7 +184,7 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' });
 }
 
-javascriptasync function loadStories() {
+async function loadStories() {
   storiesLoading.hidden = false;
   storiesEmpty.hidden = true;
   storiesGrid.querySelectorAll('.story-card').forEach(el => el.remove());
