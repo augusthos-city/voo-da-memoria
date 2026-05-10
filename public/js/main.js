@@ -187,7 +187,6 @@ function formatDate(iso) {
 async function loadStories() {
   storiesLoading.hidden = false;
   storiesEmpty.hidden = true;
-  // Remove existing cards
   storiesGrid.querySelectorAll('.story-card').forEach(el => el.remove());
 
   try {
@@ -195,7 +194,12 @@ async function loadStories() {
     const stories = await res.json();
     storiesLoading.hidden = true;
 
-    if (!stories.length) { storiesEmpty.hidden = false; return; }
+    if (!stories.length) {
+      storiesEmpty.hidden = false;
+      return;
+    }
+
+    storiesEmpty.hidden = true;
 
     stories.forEach(s => {
       const card = document.createElement('article');
