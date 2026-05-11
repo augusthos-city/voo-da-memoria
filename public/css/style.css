@@ -516,4 +516,112 @@ a { color: inherit; text-decoration: none; }
   .metas-grid { grid-template-columns: repeat(2,1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .story-form { padding: 1.5rem; }
+   /* ── PAINEL INTERATIVO ───────────────────────────────────── */
+.wordcloud-section { background: var(--branco); }
+
+.painel-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; align-items: start;
 }
+
+.painel-card {
+  background: var(--creme); border: 1px solid var(--creme-dark);
+  border-radius: 16px; padding: 2rem; box-shadow: var(--shadow);
+}
+.painel-card-title {
+  font-family: var(--font-display); font-size: 1.2rem;
+  color: var(--verde); margin-bottom: 1.25rem;
+}
+
+/* Nuvem */
+.wordcloud-wrap {
+  width: 100%; border-radius: 10px; overflow: hidden;
+  background: var(--branco); min-height: 200px;
+  display: flex; align-items: center; justify-content: center;
+}
+#wordcloudCanvas { max-width: 100%; height: auto; display: block; }
+.wordcloud-empty {
+  font-family: var(--font-ui); font-size: .9rem;
+  color: var(--texto-muted); text-align: center; padding: 2rem;
+}
+
+/* Meta */
+.meta-goal { margin-bottom: 2rem; }
+.meta-goal-numbers {
+  display: flex; align-items: baseline; gap: .25rem;
+  margin-bottom: .25rem;
+}
+.meta-goal-current {
+  font-family: var(--font-display); font-size: 4rem;
+  font-weight: 900; color: var(--verde);
+  transition: all .5s;
+}
+.meta-goal-sep { font-size: 2rem; color: var(--texto-muted); }
+.meta-goal-total { font-size: 2rem; color: var(--texto-muted); font-family: var(--font-display); }
+.meta-goal-label {
+  font-family: var(--font-ui); font-size: .85rem;
+  color: var(--texto-muted); margin-bottom: 1.25rem;
+}
+
+.meta-goal-bar-wrap { margin-bottom: 1rem; }
+.meta-goal-bar {
+  height: 18px; background: var(--creme-dark);
+  border-radius: 9px; overflow: hidden; position: relative;
+}
+.meta-goal-bar-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--verde-med), var(--verde-light));
+  border-radius: 9px;
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+.meta-goal-pct {
+  position: absolute; right: 8px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; color: var(--branco);
+}
+
+.meta-milestones {
+  display: flex; justify-content: space-between;
+  padding: 0 4px; margin-bottom: 1rem;
+}
+.milestone {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+}
+.milestone-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--creme-dark); border: 2px solid var(--texto-muted);
+  transition: all .4s;
+}
+.milestone-dot.reached {
+  background: var(--verde-light); border-color: var(--verde);
+  box-shadow: 0 0 8px rgba(82,183,136,0.5);
+}
+.milestone span {
+  font-family: var(--font-ui); font-size: .75rem; color: var(--texto-muted);
+}
+
+.meta-message {
+  font-family: var(--font-ui); font-size: .9rem; font-weight: 500;
+  color: var(--verde-med); min-height: 1.5rem; text-align: center;
+  padding: .5rem; border-radius: 6px;
+}
+
+.meta-stats-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: .75rem; border-top: 1px solid var(--creme-dark); padding-top: 1.25rem;
+}
+.meta-stat-item { text-align: center; }
+.meta-stat-num {
+  display: block; font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; color: var(--marrom);
+}
+.meta-stat-label {
+  font-family: var(--font-ui); font-size: .75rem; color: var(--texto-muted);
+}
+
+@media (max-width: 768px) {
+  .painel-grid { grid-template-columns: 1fr; }
+}
+
