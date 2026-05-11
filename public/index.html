@@ -255,7 +255,80 @@
 </section>
 
 <!-- ═══ FOOTER ═══════════════════════════════════════════════════════════════ -->
-<footer class="footer">
+<!-- ═══ NUVEM DE PALAVRAS + PAINEL META ══════════════════════════════════ -->
+<section class="section wordcloud-section" id="painel">
+  <div class="container">
+    <span class="section-tag">Acervo Vivo</span>
+    <h2 class="section-title">As palavras que nos<br><em>definem</em></h2>
+    <p class="section-intro">Gerada a partir das histórias compartilhadas pelos servidores do IFSC Araranguá.</p>
+
+    <div class="painel-grid">
+
+      <!-- Nuvem de palavras -->
+      <div class="painel-card wordcloud-card">
+        <h3 class="painel-card-title">Nuvem de Memórias</h3>
+        <div class="wordcloud-wrap" id="wordcloudWrap">
+          <canvas id="wordcloudCanvas" width="520" height="320"></canvas>
+          <p class="wordcloud-empty" id="wordcloudEmpty" hidden>
+            As palavras aparecerão aqui conforme as histórias forem publicadas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Meta de histórias -->
+      <div class="painel-card meta-card-panel">
+        <h3 class="painel-card-title">Meta do Projeto</h3>
+        <div class="meta-goal">
+          <div class="meta-goal-numbers">
+            <span class="meta-goal-current" id="metaCurrent">0</span>
+            <span class="meta-goal-sep">/</span>
+            <span class="meta-goal-total">50</span>
+          </div>
+          <p class="meta-goal-label">histórias publicadas</p>
+          <div class="meta-goal-bar-wrap">
+            <div class="meta-goal-bar">
+              <div class="meta-goal-bar-fill" id="metaBarFill"></div>
+              <span class="meta-goal-pct" id="metaPct">0%</span>
+            </div>
+          </div>
+          <div class="meta-milestones">
+            <div class="milestone" data-at="10">
+              <div class="milestone-dot" id="ms10"></div>
+              <span>10</span>
+            </div>
+            <div class="milestone" data-at="25">
+              <div class="milestone-dot" id="ms25"></div>
+              <span>25</span>
+            </div>
+            <div class="milestone" data-at="50">
+              <div class="milestone-dot" id="ms50"></div>
+              <span>50 🎯</span>
+            </div>
+          </div>
+          <div class="meta-message" id="metaMessage"></div>
+        </div>
+
+        <div class="meta-stats-grid">
+          <div class="meta-stat-item">
+            <span class="meta-stat-num" id="statPending">0</span>
+            <span class="meta-stat-label">aguardando revisão</span>
+          </div>
+          <div class="meta-stat-item">
+            <span class="meta-stat-num" id="statApproved">0</span>
+            <span class="meta-stat-label">publicadas</span>
+          </div>
+          <div class="meta-stat-item">
+            <span class="meta-stat-num" id="statDays">0</span>
+            <span class="meta-stat-label">dias restantes</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  
+  <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
