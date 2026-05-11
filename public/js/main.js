@@ -257,4 +257,141 @@ pilares.forEach(p => {
   p.style.transform = 'translateY(30px)';
   p.style.transition = 'opacity .6s ease, transform .6s ease';
   obs.observe(p);
+  
 });
+// ── PAINEL INTERATIVO: Meta + Nuvem de Palavras ─────────────
+
+const STOP_WORDS = new Set([
+  'de','a','o','que','e','do','da','em','um','para','com','uma','os','no',
+  'se','na','por','mais','as','dos','como','mas','ao','ele','das','à','seu',
+  'sua','ou','ser','quando','muito','nos','já','também','foi','era','até',
+  'isso','ela','entre','depois','sem','mesmo','aos','seus','quem','nas',
+  'me','minha','meu','eu','é','são','tem','não','fui','tinha','que','aqui',
+  'lá','tudo','todo','esse','esta','este','meu','nós','você','todos','ano',
+  'anos','aqui','algo','assim','agora','ainda','sobre','pelo','pela','num',
+  'numa','há','só','bem','então','pois','mas','isso','eles','elas','isso',
+]);
+
+function tokenize(texts) {
+  const freq = {};
+  texts.forEach(text => {
+    text.toLowerCase()
+      .replace(/[^a-záéíóúãõâêîôûàèìòùç\s]/g, ' ')
+      .split(/\s+/)
+      .filter(w => w.length > 3 && !STOP_WORDS.has(w))
+      .forEach(w => { freq[w] = (freq[w] || 0) + 1; });
+  });
+  return Object.entries(freq)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 60);
+}
+
+function drawWordCloud(words) {
+  const canvas = document.getElementById('wordcloudCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  if (!words.length) {
+    document.getElementById('wordcloudEmpty').hidden = false;
+    canvas.hidden = true;
+    return;
+  }
+  document.getElementById('wordcloudEmpty').hidden = true;
+  canvas.hidden = false;
+
+  const maxFreq = words[0][1];
+  const colors = ['#1a4530','#2d6a4f','#52b788','#7d4f28','#a0632c','#40916c'];
+  const placed = [];
+
+  function overlaps(x, y, w, h) {
+    return placed.some(p =>
+      x < p.x + p.w + 8 && x + w + 8 > p.x &&
+      y < p.y + p.h + 8 && y + h + 8 > p.y
+    );
+  }
+
+  words.forEach(([word, freq]) => {
+    const size = Math.round(14 + (freq / maxFreq) * 38);
+    ctx.font = `${freq === maxFreq ? '700' : '400'} ${size}px 'DM Sans', sans-serif`;
+    const tw = ctx.measureText(word).width;
+    const th = size;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    let placed_ok = false;
+    for (let attempt = 0; attempt < 200; attempt++) {
+      const angle = attempt * 0.3;
+      const r = attempt * 3.5;
+      const cx = W / 2 + r * Math.cos(angle) - tw / 2;
+      const cy = H / 2 + r * Math.sin(angle) + th / 2;
+      if (cx < 4 || cy - th < 4 || cx + tw > W - 4 || cy > H - 4) continue;
+      if (!overlaps(cx, cy - th, tw, th)) {
+        ctx.fillStyle = color;
+        ctx.globalAlpha = 0.75 + (freq / maxFreq) * 0.25;
+        ctx.fillText(word, cx, cy);
+        placed.push({ x: cx, y: cy - th, w: tw, h: th });
+        placed_ok = true;
+        break;
+      }
+    }
+  });
+  ctx.globalAlpha = 1;
+}
+
+function updateMeta(approved, pending) {
+  const META = 50;
+  const END_DATE = new Date('2026-12-10');
+  const today = new Date();
+  const daysLeft = Math.max(0, Math.ceil((END_DATE - today) / 86400000));
+  const pct = Math.min(100, Math.round((approved / META) * 100));
+
+  // Animate counter
+  const currentEl = document.getElementById('metaCurrent');
+  let start = parseInt(currentEl.textContent) || 0;
+  const step = () => {
+    if (start < approved) { start++; currentEl.textContent = start; requestAnimationFrame(step); }
+    else currentEl.textContent = approved;
+  };
+  requestAnimationFrame(step);
+
+  document.getElementById('metaBarFill').style.width = pct + '%';
+  document.getElementById('metaPct').textContent = pct + '%';
+  document.getElementById('statPending').textContent = pending;
+  document.getElementById('statApproved').textContent = approved;
+  document.getElementById('statDays').textContent = daysLeft;
+
+  // Milestones
+  [10, 25, 50].forEach(n => {
+    const dot = document.getElementById('ms' + n);
+    if (dot) dot.classList.toggle('reached', approved >= n);
+  });
+
+  // Message
+  const msg = document.getElementById('metaMessage');
+  if (approved === 0) msg.textContent = '🐦 Seja o primeiro a compartilhar!';
+  else if (approved < 10) msg.textContent = `✨ Ótimo começo! Faltam ${10 - approved} para o primeiro marco.`;
+  else if (approved < 25) msg.textContent = `🚀 Excelente! Faltam ${25 - approved} para a metade do caminho.`;
+  else if (approved < 50) msg.textContent = `🔥 Incrível! Faltam apenas ${50 - approved} para a meta final!`;
+  else msg.textContent = '🎉 Meta alcançada! Parabéns a todos os servidores!';
+}
+
+async function loadPainel() {
+  try {
+    const res = await fetch('/api/stories');
+    const approved = await res.json();
+
+    // Word cloud from approved stories
+    const texts = approved.map(s => s.texto);
+    const words = tokenize(texts);
+    drawWordCloud(words);
+
+    // For meta we also fetch pending via a trick — just use approved count
+    // and show pending as unknown (0) since we don't have admin access here
+    updateMeta(approved.length, '—');
+  } catch (e) {
+    console.error('Erro ao carregar painel:', e);
+  }
+}
+
+// Run after stories load
+setTimeout(loadPainel, 1500);
