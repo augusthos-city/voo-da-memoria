@@ -222,9 +222,9 @@ async function loadStories() {
       `;
       storiesGrid.appendChild(card);
     });
-  } catch {
+  } catch (err) {
     storiesLoading.hidden = true;
-    storiesEmpty.hidden = false;
+    console.error('Erro ao carregar histórias:', err);
   }
 }
 
