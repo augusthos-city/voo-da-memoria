@@ -185,8 +185,8 @@ function formatDate(iso) {
 }
 
 async function loadStories() {
-  storiesLoading.hidden = false;
-  storiesEmpty.hidden = true;
+  storiesEmpty.style.display = 'block';
+  storiesEmpty.style.display = 'none';
   storiesGrid.querySelectorAll('.story-card').forEach(el => el.remove());
 
   try {
@@ -195,11 +195,11 @@ async function loadStories() {
     storiesLoading.hidden = true;
 
     if (!stories.length) {
-      storiesEmpty.hidden = false;
+      storiesEmpty.style.display = 'block';
       return;
     }
 
-    storiesEmpty.hidden = true;
+    storiesEmpty.style.display = 'none';
 
     stories.forEach(s => {
       const card = document.createElement('article');
