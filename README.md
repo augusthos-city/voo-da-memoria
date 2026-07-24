@@ -155,4 +155,4 @@ Acesse `/admin.html` e insira o token de administrador.
 Câmpus Araranguá  
 [ifsc.edu.br](https://www.ifsc.edu.br)
 
-Coordenadora: Dr.ª Luciane Nóbrega Juliano
+Coordenador : Me. José Augusto Farias Santos
