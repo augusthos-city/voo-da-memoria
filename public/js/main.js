@@ -404,3 +404,98 @@ async function loadPainel() {
 
 // Run after stories load
 setTimeout(loadPainel, 1500);
+
+// ── PAINEL PORTA-RETRATO ────────────────────────────────────
+
+// Layout fixo: define tamanho de cada slot (índice 0 a N)
+const PR_LAYOUTS = [
+  'span2cr', 'normal', 'normal',
+  'span2r',  'normal', 'normal',
+  'normal',  'span2c', 'normal',
+  'normal',  'span2cr','normal',
+  'normal',  'normal', 'span2c',
+];
+
+function buildPortaRetrato(stories) {
+  const container = document.getElementById('portaRetrato');
+  const emptyEl   = document.getElementById('prEmpty');
+
+  // Filtra apenas histórias com imagem
+  const comFoto = stories.filter(s =>
+    s.file && s.fileMime && s.fileMime.startsWith('image/')
+  );
+
+  if (!comFoto.length) {
+    emptyEl.hidden = false;
+    return;
+  }
+
+  emptyEl.hidden = true;
+
+  const grid = document.createElement('div');
+  grid.className = 'pr-grid';
+
+  // Repete fotos se houver menos que o layout
+  const slots = PR_LAYOUTS.length;
+  const filled = Array.from({ length: slots }, (_, i) => comFoto[i % comFoto.length]);
+
+  filled.forEach((story, i) => {
+    const cell = document.createElement('div');
+    const layout = PR_LAYOUTS[i] || 'normal';
+    cell.className = 'pr-cell' + (layout !== 'normal' ? ' ' + layout : '');
+
+    const img = document.createElement('img');
+    img.src = story.file;
+    img.alt = `Foto de ${escHtml(story.nome)}`;
+    img.loading = 'lazy';
+
+    const label = document.createElement('div');
+    label.className = 'pr-cell-label';
+    label.textContent = story.nome;
+
+    cell.appendChild(img);
+    cell.appendChild(label);
+
+    // Lightbox ao clicar
+    cell.addEventListener('click', () => openLightbox(story));
+    grid.appendChild(cell);
+  });
+
+  container.innerHTML = '';
+  container.appendChild(grid);
+}
+
+function openLightbox(story) {
+  const lb = document.createElement('div');
+  lb.className = 'pr-lightbox';
+  lb.innerHTML = `
+    <button class="pr-lightbox-close" aria-label="Fechar">✕</button>
+    <img src="${story.file}" alt="Foto de ${escHtml(story.nome)}"/>
+    <div class="pr-lightbox-info">${escHtml(story.nome)}</div>
+  `;
+  lb.querySelector('.pr-lightbox-close').addEventListener('click', () => lb.remove());
+  lb.addEventListener('click', e => { if (e.target === lb) lb.remove(); });
+  document.body.appendChild(lb);
+}
+
+// Adicionar ao link da nav
+const navEl = document.getElementById('navLinks');
+if (navEl) {
+  const li = document.createElement('li');
+  li.innerHTML = '<a href="#galeria">Galeria</a>';
+  const adminLi = navEl.querySelector('li:last-child');
+  navEl.insertBefore(li, adminLi);
+}
+
+// Carregar galeria junto com as histórias
+const _origLoad = loadStories;
+async function loadGaleria() {
+  try {
+    const res = await fetch('/api/stories');
+    const stories = await res.json();
+    buildPortaRetrato(stories);
+  } catch(e) {
+    console.error('Erro ao carregar galeria:', e);
+  }
+}
+loadGaleria();
