@@ -100,8 +100,9 @@ storyForm.addEventListener('submit', e => {
   const texto = document.getElementById('texto').value.trim();
   let valid = true;
 
-  if (!nome || nome.length < 2) { showError('nomeErr','Nome inválido (mínimo 2 caracteres).'); valid = false; }
+ if (!nome || nome.length < 2) { showError('nomeErr','Nome inválido (mínimo 2 caracteres).'); valid = false; }
   if (!texto || texto.length < 20) { showError('textoErr','Texto muito curto (mínimo 20 caracteres).'); valid = false; }
+  if (!document.getElementById('tcleAceite').checked) { showError('tcleErr','Você precisa aceitar o Termo de Consentimento para enviar.'); valid = false; }
   if (!valid) return;
 
   const formData = new FormData();
@@ -236,7 +237,15 @@ function escHtml(str) {
 }
 
 loadStories();
+// ── TCLE toggle ─────────────────────────────────────────────
+const tcleToggle  = document.getElementById('tcleToggle');
+const tcleBody    = document.getElementById('tcleBody');
+const tcleChevron = document.getElementById('tcleChevron');
 
+tcleToggle.addEventListener('click', () => {
+  const open = tcleBody.classList.toggle('open');
+  tcleChevron.classList.toggle('open', open);
+});
 // ── Intersection observer for pilar animations ──────────────
 const pilares = document.querySelectorAll('.pilar');
 const obs = new IntersectionObserver((entries) => {
