@@ -63,7 +63,7 @@ function renderStories() {
   }
 
   adminList.innerHTML = filtered.map(s => `
-    <div class="admin-card" data-id="${s.id}">
+    <div class="admin-card" data-id="${s._id}">
       <div class="admin-card-header">
         <div class="admin-card-meta">
           <span class="admin-card-name">${escHtml(s.nome)}</span>
@@ -78,10 +78,10 @@ function renderStories() {
         </a>
       </div>` : ''}
       <div class="admin-card-actions">
-        ${s.status !== 'approved' ? `<button class="action-btn action-approve" onclick="setStatus('${s.id}','approved')">✓ Aprovar</button>` : ''}
-        ${s.status !== 'rejected' ? `<button class="action-btn action-reject" onclick="setStatus('${s.id}','rejected')">✕ Rejeitar</button>` : ''}
-        ${s.status !== 'pending'  ? `<button class="action-btn action-pending" onclick="setStatus('${s.id}','pending')">↩ Pendente</button>` : ''}
-        <button class="action-btn action-delete" onclick="deleteStory('${s.id}')">🗑 Excluir</button>
+        ${s.status !== 'approved' ? `<button class="action-btn action-approve" onclick="setStatus('${s._id}','approved')">✓ Aprovar</button>` : ''}
+        ${s.status !== 'rejected' ? `<button class="action-btn action-reject" onclick="setStatus('${s._id}','rejected')">✕ Rejeitar</button>` : ''}
+        ${s.status !== 'pending'  ? `<button class="action-btn action-pending" onclick="setStatus('${s._id}','pending')">↩ Pendente</button>` : ''}
+        <button class="action-btn action-delete" onclick="deleteStory('${s._id}')">🗑 Excluir</button>
       </div>
     </div>
   `).join('');
@@ -113,7 +113,7 @@ async function setStatus(id, status) {
     });
     if (!res.ok) { alert('Erro ao atualizar.'); return; }
     const updated = await res.json();
-    const idx = allStories.findIndex(s=>s.id===id);
+    const idx = allStories.findIndex(s => s._id === id);
     if (idx !== -1) allStories[idx] = updated;
     renderStories(); updateStats();
   } catch { alert('Erro de rede.'); }
@@ -127,7 +127,7 @@ async function deleteStory(id) {
       headers: { 'x-admin-token': adminToken },
     });
     if (!res.ok) { alert('Erro ao excluir.'); return; }
-    allStories = allStories.filter(s=>s.id!==id);
+    allStories = allStories.filter(s => s._id !== id);
     renderStories(); updateStats();
   } catch { alert('Erro de rede.'); }
 }
